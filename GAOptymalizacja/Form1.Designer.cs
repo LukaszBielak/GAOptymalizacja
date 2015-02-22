@@ -28,71 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dlugoscChromosomu = new System.Windows.Forms.TextBox();
+            this.mutacjaProp = new System.Windows.Forms.TextBox();
+            this.wielkośćPopulacji = new System.Windows.Forms.TextBox();
+            this.krzyżowanieProp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Epoki = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.wynik = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.funkcja = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.X1Dif = new System.Windows.Forms.TextBox();
+            this.X1Min = new System.Windows.Forms.TextBox();
+            this.X1Max = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.X2Dif = new System.Windows.Forms.TextBox();
+            this.X2Min = new System.Windows.Forms.TextBox();
+            this.X2Max = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.plot1 = new OxyPlot.WindowsForms.PlotView();
+            this.oblicz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // dlugoscChromosomu
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.dlugoscChromosomu.Enabled = false;
+            this.dlugoscChromosomu.Location = new System.Drawing.Point(147, 12);
+            this.dlugoscChromosomu.Name = "dlugoscChromosomu";
+            this.dlugoscChromosomu.Size = new System.Drawing.Size(100, 20);
+            this.dlugoscChromosomu.TabIndex = 0;
             // 
-            // textBox2
+            // mutacjaProp
             // 
-            this.textBox2.Location = new System.Drawing.Point(147, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.mutacjaProp.Location = new System.Drawing.Point(147, 90);
+            this.mutacjaProp.Name = "mutacjaProp";
+            this.mutacjaProp.Size = new System.Drawing.Size(100, 20);
+            this.mutacjaProp.TabIndex = 1;
+            this.mutacjaProp.Text = "0.50";
             // 
-            // textBox3
+            // wielkośćPopulacji
             // 
-            this.textBox3.Location = new System.Drawing.Point(147, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.wielkośćPopulacji.Location = new System.Drawing.Point(147, 38);
+            this.wielkośćPopulacji.Name = "wielkośćPopulacji";
+            this.wielkośćPopulacji.Size = new System.Drawing.Size(100, 20);
+            this.wielkośćPopulacji.TabIndex = 2;
+            this.wielkośćPopulacji.Text = "10";
             // 
-            // textBox4
+            // krzyżowanieProp
             // 
-            this.textBox4.Location = new System.Drawing.Point(147, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.krzyżowanieProp.Location = new System.Drawing.Point(147, 64);
+            this.krzyżowanieProp.Name = "krzyżowanieProp";
+            this.krzyżowanieProp.Size = new System.Drawing.Size(100, 20);
+            this.krzyżowanieProp.TabIndex = 3;
+            this.krzyżowanieProp.Text = "0.25";
             // 
             // label1
             // 
@@ -139,12 +144,13 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Epoki";
             // 
-            // textBox5
+            // Epoki
             // 
-            this.textBox5.Location = new System.Drawing.Point(147, 116);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 9;
+            this.Epoki.Location = new System.Drawing.Point(147, 116);
+            this.Epoki.Name = "Epoki";
+            this.Epoki.Size = new System.Drawing.Size(100, 20);
+            this.Epoki.TabIndex = 9;
+            this.Epoki.Text = "1000";
             // 
             // label6
             // 
@@ -158,18 +164,19 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Algorytm genetyczny dla optymalizacji funkcji";
             // 
-            // textBox6
+            // wynik
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox6.Location = new System.Drawing.Point(157, 491);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(626, 30);
-            this.textBox6.TabIndex = 11;
+            this.wynik.Enabled = false;
+            this.wynik.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.wynik.Location = new System.Drawing.Point(105, 493);
+            this.wynik.Name = "wynik";
+            this.wynik.Size = new System.Drawing.Size(500, 30);
+            this.wynik.TabIndex = 11;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.funkcja);
             this.groupBox1.Location = new System.Drawing.Point(530, 61);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(253, 47);
@@ -185,24 +192,23 @@
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 11;
             this.label8.Text = "Funkcja";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // comboBox1
+            // funkcja
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.funkcja.FormattingEnabled = true;
+            this.funkcja.Items.AddRange(new object[] {
             "Rastrigin"});
-            this.comboBox1.Location = new System.Drawing.Point(126, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 10;
+            this.funkcja.Location = new System.Drawing.Point(126, 20);
+            this.funkcja.Name = "funkcja";
+            this.funkcja.Size = new System.Drawing.Size(121, 21);
+            this.funkcja.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(54, 496);
+            this.label7.Location = new System.Drawing.Point(12, 496);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 25);
             this.label7.TabIndex = 13;
@@ -213,9 +219,9 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.X1Dif);
+            this.groupBox2.Controls.Add(this.X1Min);
+            this.groupBox2.Controls.Add(this.X1Max);
             this.groupBox2.Location = new System.Drawing.Point(530, 114);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(253, 102);
@@ -250,35 +256,38 @@
             this.label9.TabIndex = 3;
             this.label9.Text = "Górne";
             // 
-            // textBox9
+            // X1Dif
             // 
-            this.textBox9.Location = new System.Drawing.Point(147, 71);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 2;
+            this.X1Dif.Enabled = false;
+            this.X1Dif.Location = new System.Drawing.Point(147, 71);
+            this.X1Dif.Name = "X1Dif";
+            this.X1Dif.Size = new System.Drawing.Size(100, 20);
+            this.X1Dif.TabIndex = 2;
             // 
-            // textBox8
+            // X1Min
             // 
-            this.textBox8.Location = new System.Drawing.Point(147, 45);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 1;
+            this.X1Min.Location = new System.Drawing.Point(147, 45);
+            this.X1Min.Name = "X1Min";
+            this.X1Min.Size = new System.Drawing.Size(100, 20);
+            this.X1Min.TabIndex = 1;
+            this.X1Min.Text = "-3";
             // 
-            // textBox7
+            // X1Max
             // 
-            this.textBox7.Location = new System.Drawing.Point(147, 19);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 0;
+            this.X1Max.Location = new System.Drawing.Point(147, 19);
+            this.X1Max.Name = "X1Max";
+            this.X1Max.Size = new System.Drawing.Size(100, 20);
+            this.X1Max.TabIndex = 0;
+            this.X1Max.Text = "12.1";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.textBox12);
-            this.groupBox3.Controls.Add(this.textBox11);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.X2Dif);
+            this.groupBox3.Controls.Add(this.X2Min);
+            this.groupBox3.Controls.Add(this.X2Max);
             this.groupBox3.Location = new System.Drawing.Point(530, 222);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(253, 107);
@@ -313,39 +322,42 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Górne";
             // 
-            // textBox12
+            // X2Dif
             // 
-            this.textBox12.Location = new System.Drawing.Point(147, 74);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 2;
+            this.X2Dif.Enabled = false;
+            this.X2Dif.Location = new System.Drawing.Point(147, 74);
+            this.X2Dif.Name = "X2Dif";
+            this.X2Dif.Size = new System.Drawing.Size(100, 20);
+            this.X2Dif.TabIndex = 2;
             // 
-            // textBox11
+            // X2Min
             // 
-            this.textBox11.Location = new System.Drawing.Point(147, 46);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 1;
+            this.X2Min.Location = new System.Drawing.Point(147, 46);
+            this.X2Min.Name = "X2Min";
+            this.X2Min.Size = new System.Drawing.Size(100, 20);
+            this.X2Min.TabIndex = 1;
+            this.X2Min.Text = "4.1";
             // 
-            // textBox10
+            // X2Max
             // 
-            this.textBox10.Location = new System.Drawing.Point(147, 20);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 0;
+            this.X2Max.Location = new System.Drawing.Point(147, 20);
+            this.X2Max.Name = "X2Max";
+            this.X2Max.Size = new System.Drawing.Size(100, 20);
+            this.X2Max.TabIndex = 0;
+            this.X2Max.Text = "5.8";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.dlugoscChromosomu);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.wielkośćPopulacji);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.textBox5);
+            this.groupBox4.Controls.Add(this.krzyżowanieProp);
+            this.groupBox4.Controls.Add(this.Epoki);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.mutacjaProp);
             this.groupBox4.Location = new System.Drawing.Point(530, 335);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(253, 150);
@@ -367,17 +379,28 @@
             this.plot1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plot1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // oblicz
+            // 
+            this.oblicz.Location = new System.Drawing.Point(639, 488);
+            this.oblicz.Name = "oblicz";
+            this.oblicz.Size = new System.Drawing.Size(100, 35);
+            this.oblicz.TabIndex = 17;
+            this.oblicz.Text = "Oblicz";
+            this.oblicz.UseVisualStyleBackColor = true;
+            this.oblicz.Click += new System.EventHandler(this.oblicz_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 531);
+            this.Controls.Add(this.oblicz);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.wynik);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.plot1);
             this.Name = "Form1";
@@ -398,21 +421,21 @@
         #endregion
 
         private OxyPlot.WindowsForms.PlotView plot1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox dlugoscChromosomu;
+        private System.Windows.Forms.TextBox mutacjaProp;
+        private System.Windows.Forms.TextBox wielkośćPopulacji;
+        private System.Windows.Forms.TextBox krzyżowanieProp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox Epoki;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox wynik;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox funkcja;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -420,15 +443,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox X1Dif;
+        private System.Windows.Forms.TextBox X1Min;
+        private System.Windows.Forms.TextBox X1Max;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox X2Dif;
+        private System.Windows.Forms.TextBox X2Min;
+        private System.Windows.Forms.TextBox X2Max;
+        private System.Windows.Forms.Button oblicz;
         
     }
 }
