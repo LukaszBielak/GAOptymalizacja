@@ -197,7 +197,8 @@
             // 
             this.funkcja.FormattingEnabled = true;
             this.funkcja.Items.AddRange(new object[] {
-            "Rastrigin"});
+            "Rastrigin",
+            "Michalewicz"});
             this.funkcja.Location = new System.Drawing.Point(126, 20);
             this.funkcja.Name = "funkcja";
             this.funkcja.Size = new System.Drawing.Size(121, 21);

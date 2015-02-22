@@ -1,8 +1,11 @@
-﻿using System;
+﻿using OxyPlot;
+using OxyPlot.Series;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +18,18 @@ namespace GAOptymalizacja
         public Form1()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            var pm = new PlotModel
+            {
+                Title = "Trigonometric functions",
+                Subtitle = "Example using the FunctionSeries",
+                PlotType = PlotType.Cartesian,
+                Background = OxyColors.White
+            };
+            pm.Series.Add(new FunctionSeries(Math.Sin, -10, 10, 0.1, "sin(x)"));
+            pm.Series.Add(new FunctionSeries(Math.Cos, -10, 10, 0.1, "cos(x)"));
+            pm.Series.Add(new FunctionSeries(t => 5 * Math.Cos(t), t => 5 * Math.Sin(t), 0, 2 * Math.PI, 0.1, "cos(t),sin(t)"));
+            plot1.Model = pm;
         }
 
         private void oblicz_Click(object sender, EventArgs e)
@@ -27,12 +42,46 @@ namespace GAOptymalizacja
                 }
                 else
                 {
-                    GA algorithm = new GA();
-                    algorithm.evolve();
+                    List<int> partialLengths = new List<int>();
+                    double[,] limitation = new double[,] { { Double.Parse(X1Max.Text, CultureInfo.InvariantCulture), Double.Parse(X1Min.Text, CultureInfo.InvariantCulture) }, { Double.Parse(X2Max.Text, CultureInfo.InvariantCulture), Double.Parse(X2Min.Text, CultureInfo.InvariantCulture) } };
+
+                    double length = 0;
+                    for (int r = 0; r <= 1; r++)
+                    {
+                        double partialLenght = chromosomeLenght(limitation[r, 0], limitation[r, 1]);
+                        length = length + partialLenght;
+                        partialLengths.Add((int)partialLenght);
+
+                    }
+
+                    GA algorithm = new GA(funkcja.Text, X1Max.Text, X1Min.Text, X2Max.Text, X2Min.Text, wielkośćPopulacji.Text, krzyżowanieProp.Text, mutacjaProp.Text, Epoki.Text, partialLengths);
+
+                    X1Dif.Text = partialLengths.ElementAt(0).ToString();
+                    X2Dif.Text = partialLengths.ElementAt(1).ToString();
+                    int CL = partialLengths.ElementAt(0) + partialLengths.ElementAt(1);
+                    dlugoscChromosomu.Text = CL.ToString();
+
+                    var best = algorithm.evolve();
+
+                    wynik.Text = best;
                 }
                    
         }
 
+        private double chromosomeLenght(double max, double min)
+        {
+            double zm = (max - min) * Math.Pow(10, 4);
+            int pow = 0;
+            double parialLenght = 0;
+            do
+            {
+                pow++;
+                parialLenght = Math.Pow(2, pow);
+
+            } while (parialLenght < zm);
+
+            return pow;
+        }
 
         private bool initializeData()
         {

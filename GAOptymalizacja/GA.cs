@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,16 +9,34 @@ namespace GAOptymalizacja
 {
     class GA
     {
+        public GA(string function, string X1Max, string X1Min, string X2Max, string X2Mix, string wielkośćPopulacji, string krzyżowanieProp, string mutacjaProp, string Epoki, List<int> partialLengths )
+        {
+            this.function = function;
+            this.X1Max = Double.Parse(X1Max, CultureInfo.InvariantCulture);
+            this.X1Min = Double.Parse(X1Min, CultureInfo.InvariantCulture);
+            this.X2Max = Double.Parse(X2Max, CultureInfo.InvariantCulture);
+            this.X2Min = Double.Parse(X2Mix, CultureInfo.InvariantCulture);
+            this.populationSize = Int32.Parse(wielkośćPopulacji);
+            this.crossoverProb = Double.Parse(krzyżowanieProp, CultureInfo.InvariantCulture);
+            this.mutationprob = Double.Parse(mutacjaProp, CultureInfo.InvariantCulture);
+            this.generations = Int32.Parse(Epoki);
+            this.partialLengths = partialLengths;
+            
+        }
+
+
         List<double> bestAdapted = new List<double>();
         List<string> tmpPop = new List<string>();
         List<int> partialLengths = new List<int>();
         private string child;
         private string mutantChild;
-        private int chromosomeSize = 15;
-        private double mutationprob = 0.50;
-        private double crossoverProb = 0.50;
-        private int populationSize = 30;
-        private int generations = 100000;
+        private double X1Max, X1Min, X2Max, X2Min;
+        private string function;
+        private int chromosomeSize;
+        private double mutationprob;
+        private double crossoverProb;
+        private int populationSize;
+        private int generations;
         private int selectionTournamentSize = 3;
 
         double[,] limitation = new double[,] { { 12.1, -3 }, { 5.8, 4.1 } };
@@ -43,7 +62,7 @@ namespace GAOptymalizacja
             return genes;
         }
 
-        private double evaluationOfAdaptation(string genes)
+        private double evaluationOfAdaptation(string genes, string function)
         {
             //int cost = 0;
 
@@ -60,14 +79,24 @@ namespace GAOptymalizacja
 
             var unknown = calculateUnknown(genes);
 
-            var funceval = 20 + (Math.Pow(unknown.ElementAt(0), 2) - 10 * Math.Cos(2 * Math.PI * unknown.ElementAt(0))) + (Math.Pow(unknown.ElementAt(1), 2) - 10 * Math.Cos(2 * Math.PI * unknown.ElementAt(1)));
-
-            return funceval;
+            if(function == "Rastrigin")
+            {
+                var rastrigin = 20 + (Math.Pow(unknown.ElementAt(0), 2) - 10 * Math.Cos(2 * Math.PI * unknown.ElementAt(0))) + (Math.Pow(unknown.ElementAt(1), 2) - 10 * Math.Cos(2 * Math.PI * unknown.ElementAt(1)));
+                return rastrigin;
+            }
+            else if(function == "Michalewicz")
+            {
+                var michalewicz = -(Math.Sin(unknown.ElementAt(0)) * (Math.Pow(Math.Sin(Math.Pow(unknown.ElementAt(0), 2) / Math.PI), 10)) + Math.Sin(unknown.ElementAt(1) * (Math.Pow(Math.Sin(Math.Pow(2 * unknown.ElementAt(0), 2) / Math.PI), 10))));
+                return michalewicz;
+            
+            }
+            return 0;
+            
         }
 
         private string bestChromosome(string currentBest, List<string> population)
         {
-            double bestScore = currentBest == "" ? 9999 : evaluationOfAdaptation(currentBest);
+            double bestScore = currentBest == "" ? 9999 : evaluationOfAdaptation(currentBest, function);
             string best = currentBest;
             int index = 0;
             foreach (var score in bestAdapted)
@@ -187,20 +216,6 @@ namespace GAOptymalizacja
             return pop;
         }
 
-        private double chromosomeLenght(double max, double min)
-        {
-            double zm = (max - min) * Math.Pow(10, 4);
-            int pow = 0;
-            double parialLenght = 0;
-            do
-            {
-                pow++;
-                parialLenght = Math.Pow(2, pow);
-
-            } while (parialLenght < zm);
-
-            return pow;
-        }
 
         private List<double> calculateUnknown(string chromosome)
         {
@@ -225,20 +240,9 @@ namespace GAOptymalizacja
             //rastigin
             #region rastigin
 
-            double length = 0;
-
-
-            partialLengths = new List<int>();
-            for (int r = 0; r <= 1; r++)
-            {
-                double partialLenght = chromosomeLenght(limitation[r, 0], limitation[r, 1]);
-                length = length + partialLenght;
-                partialLengths.Add((int)partialLenght);
-
-            }
+            double length = partialLengths.ElementAt(0) + partialLengths.ElementAt(1);
+            
             chromosomeSize = (int)length;
-
-
 
             #endregion
 
@@ -253,20 +257,22 @@ namespace GAOptymalizacja
             for (int j = 1; j <= generations; j++)
             {
                 bestAdapted = new List<double>();
+
                 foreach (var chromosome in population)
                 {
-                    bestAdapted.Add(evaluationOfAdaptation(chromosome));
+                    bestAdapted.Add(evaluationOfAdaptation(chromosome, function));
                 }
+
 
                 best = bestChromosome(best, population);
                 tmpPop = selection(population, bestAdapted);
 
                 population = reproduce(tmpPop);
 
-                Console.WriteLine(best + "Score: " + evaluationOfAdaptation(best));
+                Console.WriteLine(best + "Score: " + evaluationOfAdaptation(best, function));
             }
 
-            return best;
+            return evaluationOfAdaptation(best, function).ToString();
         }
     }
 }
