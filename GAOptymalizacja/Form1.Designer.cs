@@ -81,7 +81,7 @@
             this.mutacjaProp.Name = "mutacjaProp";
             this.mutacjaProp.Size = new System.Drawing.Size(100, 20);
             this.mutacjaProp.TabIndex = 1;
-            this.mutacjaProp.Text = "0.50";
+            this.mutacjaProp.Text = "0.10";
             // 
             // wielkośćPopulacji
             // 
@@ -89,7 +89,7 @@
             this.wielkośćPopulacji.Name = "wielkośćPopulacji";
             this.wielkośćPopulacji.Size = new System.Drawing.Size(100, 20);
             this.wielkośćPopulacji.TabIndex = 2;
-            this.wielkośćPopulacji.Text = "10";
+            this.wielkośćPopulacji.Text = "20";
             // 
             // krzyżowanieProp
             // 
@@ -97,7 +97,7 @@
             this.krzyżowanieProp.Name = "krzyżowanieProp";
             this.krzyżowanieProp.Size = new System.Drawing.Size(100, 20);
             this.krzyżowanieProp.TabIndex = 3;
-            this.krzyżowanieProp.Text = "0.25";
+            this.krzyżowanieProp.Text = "0.40";
             // 
             // label1
             // 
@@ -228,7 +228,7 @@
             this.groupBox2.Size = new System.Drawing.Size(253, 102);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ograniczenia na osi X1";
+            this.groupBox2.Text = "Ograniczenia X";
             // 
             // label11
             // 
@@ -271,7 +271,7 @@
             this.X1Min.Name = "X1Min";
             this.X1Min.Size = new System.Drawing.Size(100, 20);
             this.X1Min.TabIndex = 1;
-            this.X1Min.Text = "-3";
+            this.X1Min.Text = "-5.12";
             // 
             // X1Max
             // 
@@ -279,7 +279,7 @@
             this.X1Max.Name = "X1Max";
             this.X1Max.Size = new System.Drawing.Size(100, 20);
             this.X1Max.TabIndex = 0;
-            this.X1Max.Text = "12.1";
+            this.X1Max.Text = "5.12";
             // 
             // groupBox3
             // 
@@ -294,7 +294,7 @@
             this.groupBox3.Size = new System.Drawing.Size(253, 107);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ograniczenia a osi X2";
+            this.groupBox3.Text = "Ograniczenia Y";
             // 
             // label14
             // 
@@ -337,7 +337,7 @@
             this.X2Min.Name = "X2Min";
             this.X2Min.Size = new System.Drawing.Size(100, 20);
             this.X2Min.TabIndex = 1;
-            this.X2Min.Text = "4.1";
+            this.X2Min.Text = "-5.12";
             // 
             // X2Max
             // 
@@ -345,7 +345,7 @@
             this.X2Max.Name = "X2Max";
             this.X2Max.Size = new System.Drawing.Size(100, 20);
             this.X2Max.TabIndex = 0;
-            this.X2Max.Text = "5.8";
+            this.X2Max.Text = "5.12";
             // 
             // groupBox4
             // 
@@ -405,7 +405,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.plot1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Algorytmy genetyczne - optymalizacja";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

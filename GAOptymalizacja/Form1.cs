@@ -1,4 +1,5 @@
 ﻿using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
@@ -15,20 +16,13 @@ namespace GAOptymalizacja
 {
     public partial class Form1 : Form
     {
+        Plot plt = new Plot();
         public Form1()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            var pm = new PlotModel
-            {
-                Title = "Wykres zbieżności",
-                //Subtitle = "Example using the FunctionSeries",
-                PlotType = PlotType.XY,
-                Background = OxyColors.White
-            };
-            pm.Series.Add(new FunctionSeries(Math.Sin, -10, 10, 0.1, "sin(x)"));
 
-            plot1.Model = pm;
+            
+            
         }
 
         private void oblicz_Click(object sender, EventArgs e)
@@ -62,7 +56,9 @@ namespace GAOptymalizacja
 
                     var best = algorithm.evolve();
 
-                    wynik.Text = best;
+                    wynik.Text = best.Last().Value.ToString();
+
+                    plot1.Model = plt.drawPlot(best, Double.Parse(Epoki.Text, CultureInfo.InvariantCulture));
                 }
                    
         }

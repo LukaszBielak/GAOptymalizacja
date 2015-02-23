@@ -9,25 +9,12 @@ namespace GAOptymalizacja
 {
     class GA
     {
-        public GA(string function, string X1Max, string X1Min, string X2Max, string X2Mix, string wielkośćPopulacji, string krzyżowanieProp, string mutacjaProp, string Epoki, List<int> partialLengths )
-        {
-            this.function = function;
-            this.X1Max = Double.Parse(X1Max, CultureInfo.InvariantCulture);
-            this.X1Min = Double.Parse(X1Min, CultureInfo.InvariantCulture);
-            this.X2Max = Double.Parse(X2Max, CultureInfo.InvariantCulture);
-            this.X2Min = Double.Parse(X2Mix, CultureInfo.InvariantCulture);
-            this.populationSize = Int32.Parse(wielkośćPopulacji);
-            this.crossoverProb = Double.Parse(krzyżowanieProp, CultureInfo.InvariantCulture);
-            this.mutationprob = Double.Parse(mutacjaProp, CultureInfo.InvariantCulture);
-            this.generations = Int32.Parse(Epoki);
-            this.partialLengths = partialLengths;
-            
-        }
-
 
         List<double> bestAdapted = new List<double>();
         List<string> tmpPop = new List<string>();
         List<int> partialLengths = new List<int>();
+        Dictionary<double, double> points = new Dictionary<double, double>();
+        double[,] limitation;
         private string child;
         private string mutantChild;
         private double X1Max, X1Min, X2Max, X2Min;
@@ -39,7 +26,26 @@ namespace GAOptymalizacja
         private int generations;
         private int selectionTournamentSize = 3;
 
-        double[,] limitation = new double[,] { { 12.1, -3 }, { 5.8, 4.1 } };
+        public GA(string function, string X1Max, string X1Min, string X2Max, string X2Min, string wielkośćPopulacji, string krzyżowanieProp, string mutacjaProp, string Epoki, List<int> partialLengths )
+        {
+            this.function = function;
+            this.X1Max = Double.Parse(X1Max, CultureInfo.InvariantCulture);
+            this.X1Min = Double.Parse(X1Min, CultureInfo.InvariantCulture);
+            this.X2Max = Double.Parse(X2Max, CultureInfo.InvariantCulture);
+            this.X2Min = Double.Parse(X2Min, CultureInfo.InvariantCulture);
+            this.populationSize = Int32.Parse(wielkośćPopulacji);
+            this.crossoverProb = Double.Parse(krzyżowanieProp, CultureInfo.InvariantCulture);
+            this.mutationprob = Double.Parse(mutacjaProp, CultureInfo.InvariantCulture);
+            this.generations = Int32.Parse(Epoki);
+            this.partialLengths = partialLengths;
+
+            limitation = new double[,] { { this.X1Max, this.X1Min }, { this.X2Max, this.X2Min } };
+        }
+
+
+     
+
+        
 
         Random rand = new Random();
         private string generateRandomGenes(int lenght)
@@ -64,18 +70,6 @@ namespace GAOptymalizacja
 
         private double evaluationOfAdaptation(string genes, string function)
         {
-            //int cost = 0;
-
-            //for (int i = 0; i < genes.Length; i++)
-            //{
-            //    string c = genes.Substring(i, 1);
-
-            //    if (c == "1")
-            //    {
-            //        cost = cost + 1;
-            //    }
-            //}
-            //return cost;
 
             var unknown = calculateUnknown(genes);
 
@@ -86,8 +80,8 @@ namespace GAOptymalizacja
             }
             else if(function == "Michalewicz")
             {
-                var michalewicz = -(Math.Sin(unknown.ElementAt(0)) * (Math.Pow(Math.Sin(Math.Pow(unknown.ElementAt(0), 2) / Math.PI), 10)) + Math.Sin(unknown.ElementAt(1) * (Math.Pow(Math.Sin(Math.Pow(2 * unknown.ElementAt(0), 2) / Math.PI), 10))));
-                return michalewicz;
+                var michalewicz = (Math.Sin(unknown.ElementAt(0)) * (Math.Pow(Math.Sin(Math.Pow(unknown.ElementAt(0), 2) / Math.PI), 2)) + Math.Sin(unknown.ElementAt(1) * (Math.Pow(Math.Sin(Math.Pow(2 * unknown.ElementAt(0), 2) / Math.PI), 10))));
+                return -michalewicz;
             
             }
             return 0;
@@ -235,7 +229,7 @@ namespace GAOptymalizacja
         }
 
 
-        public string evolve()
+        public Dictionary<double, double> evolve()
         {
             //rastigin
             #region rastigin
@@ -269,10 +263,11 @@ namespace GAOptymalizacja
 
                 population = reproduce(tmpPop);
 
+                points.Add((double)j, evaluationOfAdaptation(best, function));
                 Console.WriteLine(best + "Score: " + evaluationOfAdaptation(best, function));
             }
 
-            return evaluationOfAdaptation(best, function).ToString();
+            return points;
         }
     }
 }
