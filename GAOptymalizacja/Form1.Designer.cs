@@ -150,7 +150,7 @@
             this.Epoki.Name = "Epoki";
             this.Epoki.Size = new System.Drawing.Size(100, 20);
             this.Epoki.TabIndex = 9;
-            this.Epoki.Text = "1000";
+            this.Epoki.Text = "100";
             // 
             // label6
             // 
